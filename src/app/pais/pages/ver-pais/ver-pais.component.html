@@ -1,0 +1,43 @@
+<div class="alert alert-info" *ngIf="!pais; else divPais">Cargando info...</div>
+
+<ng-template #divPais>
+  <article class="row">
+    <h1 class="mb-4 px-4">
+      País: <small>{{ pais.name.common }}</small>
+    </h1>
+
+    <div class="col-4 text-center">
+      <h3>Bandera</h3>
+      <img [src]="pais.flags.png" class="img-thumbnail" />
+    </div>
+
+    <div class="col">
+      <h3 class="text-center">Información</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          Población:<strong> {{ pais.population | number }}</strong>
+        </li>
+        <li class="list-group-item">
+          Capital: <strong> {{ pais.capital[0] }}</strong>
+        </li>
+        <li class="list-group-item">
+          Código alpha3: <strong> {{ pais.cca2 }}</strong>
+        </li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="row mt-5">
+    <h3>Traducciones</h3>
+
+    <div class="col">
+      <span class="badge bg-success me-1">{{ pais.translations['spa'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['swe'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['ita'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['fra'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['est'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['ara'].common }}</span>
+      <span class="badge bg-success me-1">{{ pais.translations['tur'].common }}</span>
+    </div>
+  </article>
+</ng-template>

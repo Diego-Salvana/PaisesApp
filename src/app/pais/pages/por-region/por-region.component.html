@@ -1,0 +1,35 @@
+<section>
+  <h3>
+    Buscar por región: <small>{{ regionActiva | titlecase }}</small>
+  </h3>
+
+  <hr />
+
+  <h5>Seleccione región</h5>
+  <article class="row">
+    <div class="col">
+      <button
+        class="btn m-1"
+        (click)="activarRegion(region)"
+        [class]="
+          region === regionActiva ? 'btn-primary' : 'btn-outline-primary'
+        "
+        *ngFor="let region of regiones"
+      >
+        {{ region | titlecase }}
+      </button>
+    </div>
+  </article>
+</section>
+
+<div class="alert alert-danger" *ngIf="error.hayError">
+  No se encontraron países. (Error <strong>{{ error.codigo }}</strong
+  >: <small>{{ error.message }}</small
+  >)
+</div>
+
+<article class="row" *ngIf="paises.length > 0">
+  <div class="col">
+    <app-pais-tabla [lele]="paises"></app-pais-tabla>
+  </div>
+</article>
